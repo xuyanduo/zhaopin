@@ -31,6 +31,7 @@ public class ShiroConfig {
         map.put("/static/**", "anon");
         map.put("/login/getVerify", "anon");
         map.put("/login1", "anon");
+        map.put("/","anon");
         map.put("/loginCheck", "anon");
         map.put("/register", "anon");
         map.put("/registerCheck", "anon");

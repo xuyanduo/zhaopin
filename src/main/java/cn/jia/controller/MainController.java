@@ -38,6 +38,11 @@ public class MainController {
         return "login";
     }
 
+    @GetMapping("/")
+    public String index1(){
+        return "index";
+    }
+
     @GetMapping("/index1")
     public String index(){
         return "index";

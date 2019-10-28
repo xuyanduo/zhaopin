@@ -78,14 +78,15 @@
             <!--搜索框-->
             <div class="search">
 				<div class="input-group">
-				    <input type="text" id="keyWord" class="form-control" placeholder="请选择相应的类型再输入关键词" style="width: 300px;height: 50px;"/>
+				    <input type="text" id="keyWord" class="form-control" placeholder="请选择相应的类型再输入关键词" style="width:
+				    300px;height: 50px;"/>
 				      <span class="input-group-btn">
 				        <button  class="btn btn-danger glyphicon glyphicon-search" type="button" style="width: 50px;height: 50px;"></button>
 				      </span>
 				</div>
 			    <div class="choose">
 			    	<ul>
-			    		<li><input type="radio" name="r1" value="2">校园招聘</li>
+			    		<li><input type="radio" name="r1" value="2" checked>校园招聘</li>
 						<li><input type="radio" name="r1" value="1">社会招聘</li>
 			    	</ul>
 			   	</div>
