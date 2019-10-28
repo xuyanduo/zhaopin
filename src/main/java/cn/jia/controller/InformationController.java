@@ -7,7 +7,10 @@ import cn.jia.mapper.InformationMapper;
 import cn.jia.mapper.UserMapper;
 import cn.jia.service.InformationService;
 import cn.jia.service.UserService;
+import cn.jia.util.RandomValidateCodeUtil;
 import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -23,13 +26,14 @@ import javax.servlet.http.HttpSession;
 @RequestMapping("/info")
 public class InformationController {
 
+    private static final Logger logger = LoggerFactory.getLogger(InformationController.class);
+
     @Autowired
     private InformationService informationService;
     @Autowired
     private UserService userService;
-   /* @Value("${path}")
-    private String path;*/
-   String path = "/Users/jia/Workspace/projects/zhaopin/src/main/webapp/static/upload/";
+   @Value("${path}")
+   String path ;
 
 
     /**
@@ -73,12 +77,18 @@ public class InformationController {
      */
     @PostMapping("/upload")
     @ResponseBody
-    public ServerResponse uploadPhoto(@RequestParam("filename")MultipartFile filename, HttpSession session){
+    public ServerResponse uploadPhoto(@RequestParam("filename")MultipartFile filename, HttpSession session,String verifyInput){
         String username =(String) session.getAttribute("username");
         if (StringUtils.isEmpty(username)){
             return ServerResponse.buildErrorMsg("用户未登录");
         }
+        //检验验证码
+        String originalVerify = (String)session.getAttribute(RandomValidateCodeUtil.RANDOMCODEKEY);
+        if(!StringUtils.equals(originalVerify,verifyInput)){
+            return ServerResponse.buildErrorMsg("验证码错误");
+        }
         User user = userService.findByUsername(username);
+        logger.info("path:{}",path);
         return informationService.upload(filename,path,user.getId());
     }
 

@@ -458,11 +458,12 @@ $(function () {
                     var path = new String(data.msg);
                     var index = path.lastIndexOf("/");
                     var name = path.substring(index+1);
+                    $("#imgVerify").attr("src", 'login/getVerify?' + Math.random());//jquery方式
                     swal("上传成功");
                     $('#myModal').modal('hide');
                     $('#modelA').attr("title",name);
-                 //   $('#modelA').text(name);
                 }else {
+                    $("#imgVerify").attr("src", 'login/getVerify?' + Math.random());//jquery方式
                     swal(data.msg,"","error");
                 }
             },
@@ -516,4 +517,7 @@ $(function () {
         })
     });
 
+    $('#imgVerify').on('click',function (e) {
+        $("#imgVerify").attr("src", 'login/getVerify?' + Math.random());//jquery方式
+    });
 })

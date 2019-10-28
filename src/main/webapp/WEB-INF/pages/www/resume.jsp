@@ -384,6 +384,19 @@
 		      <div class="modal-body">
 				  <form enctype="multipart/form-data" id="modelForm" method="post">
 					  <input id="input-b2" name="filename" type="file" class="file" data-show-preview="false">
+					  <div class="row">
+						  <div class="col-xs-6 pull_left">
+							  <div class="form-group">
+								  <input class="form-control" type="tel" id="verify_input" name="verifyInput" placeholder="请输入验证码"
+										 maxlength="4">
+							  </div>
+						  </div>
+						  <div class="col-xs-6 pull_left">
+							  <a href="javascript:void(0);" title="点击更换验证码">
+								  <img id="imgVerify" src="login/getVerify" alt="更换验证码" height="36" width="140">
+							  </a>
+						  </div>
+					  </div>
 				  </form>
 
 		      </div>
@@ -416,18 +429,6 @@
        		<p style="padding-left: 600px;">版权所有@EdenJia</p>
        	</div>
        </footer>
-       
-      <%-- <script type="text/javascript">
-       	  $(function() {
-
-
-
-
-
-
-
-          })
-       </script>--%>
 	<script src="${contextPath}/static/js/www/resume.js"></script>
 	</body>
 </html>

@@ -155,7 +155,6 @@
                         } else {
                             alert("failed!");
                         }
-                        // window.location.reload();
                         getVerify();
                     }
                 });
