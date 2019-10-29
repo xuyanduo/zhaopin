@@ -107,24 +107,17 @@
         
          <!--尾部-->
        <footer>
-       		<div class="left_1">
-	       	  	<p style="color: wheat; font-size: larger; font-family: '微软雅黑';">关于公司</p>
-	       	  	<ul>
-	       	  		<li><a href="#">公司简介</a></li>
-	       	  		<li><a href="#">公司年报</a></li>
-	       	  	</ul>
-       	    </div>
-       	  <div class="left_1">
-       	  	 <p style="color: wheat; font-size: larger; font-family: '微软雅黑';">新闻</p>
-       	  	 <ul>
-       	  	 	<li><a href="#">公司公告</a></li>
-       	  	 	<li><a href="#">公司新闻</a></li>
-       	  	 </ul>
-       	  </div> 
-       	  
-       	<div id="desc">
-       		<p style="padding-left: 600px;">版权所有@EdenJia</p>
-       	</div>
+		   <div class="left_1">
+			   <ul>
+				   <li><a href="http://www.sx-hrt.com/about/">公司公告</a></li>
+				   <li><a href="http://www.sx-hrt.com/news/">公司新闻</a></li>
+			   </ul>
+		   </div>
+
+
+		   <div id="desc">
+			   <p>© 2019 山西华仁通电力科技有限公司. All Rights Reserved. </p>
+		   </div>
        </footer>
 	<script src="${contextPath}/static/js/www/collection.js"></script>
 	<script src="${contextPath}/static/js/www/collectionPage.js"></script>

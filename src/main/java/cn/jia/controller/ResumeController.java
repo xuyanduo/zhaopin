@@ -30,7 +30,7 @@ public class ResumeController {
     private UserService userService;
     @Autowired
     private ResumeService resumeService;
-    @Value("${path}")
+    @Value("${fullPath}")
     private String path;
 
     @GetMapping
