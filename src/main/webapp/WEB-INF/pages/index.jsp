@@ -120,7 +120,7 @@
         </div>
        
          <div id="liucheng">
-        	<p>校园招聘流程</p>
+        	<p>招聘流程</p>
             <img src="${contextPath}/static/img/liucheng.png" width="1052px;" height="100px;" style="margin-left: 150px;">
         </div>
         <!--尾部-->

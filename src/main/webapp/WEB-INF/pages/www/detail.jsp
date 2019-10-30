@@ -8,7 +8,7 @@
 <html>
 	<head>
 		<meta charset="utf-8" />
-		<title>XXX公司招聘首页</title>
+		<title>山西华仁通电力科技有限公司招聘筛选</title>	
 		<link rel="stylesheet" href="${contextPath}/static/css/www/xiangxi.css" />
 	    <link rel="stylesheet" href="${contextPath}/static/css/www/footer.css" />
 		<link rel="stylesheet" href="${contextPath}/static/css/bootstrap.css">
