@@ -32,8 +32,8 @@ public class InformationController {
     private InformationService informationService;
     @Autowired
     private UserService userService;
-   @Value("${path}")
-   String path ;
+    @Value("${fullPath}")
+    private String path;
 
 
     /**

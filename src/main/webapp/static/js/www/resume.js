@@ -217,7 +217,7 @@ $(function () {
             },
             dataType:'json',
             success:function (data) {
-                swal('上传成功');
+                swal('保存成功');
                 $('#showName').html(data.data.name);
                 $('#showSex').html(data.data.sex);
                 $('#showEmail').html(data.data.email);
@@ -229,7 +229,7 @@ $(function () {
                 $('#information').hide();
             },
             error:function () {
-                swal('上传失败');
+                swal('保存失败');
             }
         });
     });

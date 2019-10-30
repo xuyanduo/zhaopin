@@ -8,7 +8,7 @@
 <html>
 	<head>
 		<meta charset="utf-8" />
-		<title>XXX公司招聘首页</title>
+		<title>山西华仁通电力科技有限公司 招聘首页</title>
 	    <link rel="stylesheet" href="${contextPath}/static/css/index.css" />
 	    <link rel="stylesheet" href="${contextPath}/static/css/www/footer.css" />
 		<link rel="stylesheet" href="${contextPath}/static/css/bootstrap.css">
@@ -16,7 +16,7 @@
 		<script type="text/javascript" src="${contextPath}/static/js/bootstrap.min.js" ></script>
 		<script type="text/javascript" src="${contextPath}/static/js/sweerAlert2.79.js" ></script>
 	</head>
-	<body>
+	<body style="text-align:center">
 		<!--头部导航条-->
 		<nav class="navbar navbar-default">
 		  <div class="container-fluid">
@@ -120,28 +120,21 @@
         </div>
        
          <div id="liucheng">
-        	<p>校园招聘流程</p>
+        	<p>招聘流程</p>
             <img src="${contextPath}/static/img/liucheng.png" width="1052px;" height="100px;" style="margin-left: 150px;">
         </div>
         <!--尾部-->
        <footer>
        		<div class="left_1">
-	       	  	<p style="color: wheat; font-size: larger; font-family: '微软雅黑';">关于公司</p>
 	       	  	<ul>
-	       	  		<li><a href="#">公司简介</a></li>
-	       	  		<li><a href="#">公司年报</a></li>
+	       	  		<li><a href="http://www.sx-hrt.com/about/">公司公告</a></li>
+	       	  		<li><a href="http://www.sx-hrt.com/news/">公司新闻</a></li>
 	       	  	</ul>
        	    </div>
-       	  <div class="left_1">
-       	  	 <p style="color: wheat; font-size: larger; font-family: '微软雅黑';">新闻</p>
-       	  	 <ul>
-       	  	 	<li><a href="#">公司公告</a></li>
-       	  	 	<li><a href="#">公司新闻</a></li>
-       	  	 </ul>
-       	  </div> 
+
        	  
        	<div id="desc">
-       		<p style="padding-left: 600px;">版权所有@EdenJia</p>
+       		<p>© 2019 山西华仁通电力科技有限公司. All Rights Reserved. </p>
        	</div>
        </footer>
 
