@@ -27,9 +27,8 @@ public class InformationController {
     private InformationService informationService;
     @Autowired
     private UserService userService;
-   /* @Value("${path}")
-    private String path;*/
-   String path = "/Users/jia/Workspace/projects/zhaopin/src/main/webapp/static/upload/";
+    @Value("${fullPath}")
+    private String path;
 
 
     /**

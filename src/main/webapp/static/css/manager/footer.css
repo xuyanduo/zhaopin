@@ -9,9 +9,9 @@ footer{
  }
  
  footer div.left_1{
- 	margin-left: 200px;
  	margin-top: 10px;
- 	float: left;
+ 	padding: 0 2em;
+	display: inline-table;
  }
  
  footer div.left_1 ul{
