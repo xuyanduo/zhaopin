@@ -7,10 +7,12 @@ import org.springframework.boot.context.embedded.EmbeddedServletContainerFactory
 import org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainerFactory;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
+import tk.mybatis.spring.annotation.MapperScan;
 
 
 @SpringBootApplication
 @EnableCaching
+@MapperScan("cn.jia.mapper")
 //@EnableAutoConfiguration
 public class DemoApplication {
 

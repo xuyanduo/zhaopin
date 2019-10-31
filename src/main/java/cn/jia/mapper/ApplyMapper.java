@@ -1,6 +1,7 @@
 package cn.jia.mapper;
 
 import cn.jia.domain.Apply;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 /**
