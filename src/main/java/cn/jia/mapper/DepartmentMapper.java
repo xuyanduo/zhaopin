@@ -1,7 +1,7 @@
 package cn.jia.mapper;
 
-import cn.jia.dto.JobDTO;
+import cn.jia.dto.DepartmentDTO;
 import tk.mybatis.mapper.common.Mapper;
 
-public interface jobMapper extends Mapper<JobDTO> {
+public interface DepartmentMapper extends Mapper<DepartmentDTO> {
 }

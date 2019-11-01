@@ -4,7 +4,7 @@ import javax.persistence.Table;
 import java.util.Date;
 
 @Table(name="department")
-public class JobDTO {
+public class DepartmentDTO {
 
     private String name;
 
