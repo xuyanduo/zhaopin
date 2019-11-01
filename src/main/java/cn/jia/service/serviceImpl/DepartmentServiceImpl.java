@@ -28,7 +28,7 @@ public class DepartmentServiceImpl implements DepartmentService {
         }
         Example example = new Example(DepartmentDTO.class);
         if (StringUtils.isNotBlank(search)) {
-            example.createCriteria().andLike("name", search.trim());
+            example.createCriteria().andLike("name", "%"+search.trim()+"%");
         }
         example.orderBy("createTime").desc();
         return new PageInfo<>(departmentMapper.selectByExample(example));
