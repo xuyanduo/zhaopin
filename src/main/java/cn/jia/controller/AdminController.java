@@ -52,4 +52,10 @@ public class AdminController {
     public String department(){
         return "redirect:/department/manager";
     }
+
+    @RequiresRoles("admin")
+    @GetMapping("/job")
+    public String job(){
+        return "redirect:/job/manager";
+    }
 }

@@ -117,7 +117,7 @@
 
 								<div class="form-group">
 									<input type="text" class="form-control" id="exampleInputName2"
-										   placeholder="输入相应的部门名称">
+										   placeholder="输入相应的职位类别名称">
 								</div>
 
 								<a  href="javaScript:void(0);" class="btn btn-primary positionQuery">查询</a>
@@ -135,7 +135,7 @@
 							</ul>
 						</div>
                       <div id="page" style="float: right;margin-right: 145px;position: relative;top: -15px;">
-						  <span id="totalPage" style="display: none">${department.pages}</span>
+						  <span id="totalPage" style="display: none">${job.pages}</span>
 						  <ul class="pagination" id="pagination-demo"></ul>
 			        </div>
                     </div>
@@ -149,13 +149,13 @@
 		    <div class="modal-content">
 		      <div class="modal-header">
 		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-		        <h4 class="modal-title" id="myModalAdd">新增部门</h4>
+		        <h4 class="modal-title" id="myModalAdd">新增类别</h4>
 		      </div>
 		      <div class="modal-body">
 		        <form>
 					  <div class="form-group">
-					    <label for="question">部门名称：</label>
-					    <input type="text" class="form-control" id="addPName" placeholder="输入部门名称">
+					    <label for="question">类别名称：</label>
+					    <input type="text" class="form-control" id="addPName" placeholder="输入类别名称">
 					  </div>
 				</form>
 		      </div>
@@ -166,8 +166,7 @@
 		    </div>
 		  </div>
 		</div>
-		
-			
+
 		
 		<!--更新-->
 		 <div class="modal fade" id="update" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -175,12 +174,12 @@
 		    <div class="modal-content">
 		      <div class="modal-header">
 		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-		        <h4 class="modal-title" id="myModalLabel">部门详情</h4>
+		        <h4 class="modal-title" id="myModalLabel">类别详情</h4>
 		      </div>
 		      <div class="modal-body">
 		        <form>
 					  <div class="form-group">
-					    <label for="question">部门名称：</label>
+					    <label for="question">类别名称：</label>
 					    <input type="text" class="form-control" id="updatePName">
 					  </div>
 				</form>
@@ -192,7 +191,7 @@
 		    </div>
 		  </div>
 		</div>
-		<script src="${contextPath}/static/js/manager/department.js"></script>
-		<script src="${contextPath}/static/js/manager/departmentPage.js"></script>
+		<script src="${contextPath}/static/js/manager/job.js"></script>
+		<script src="${contextPath}/static/js/manager/jobPage.js"></script>
     </body>
 </html>

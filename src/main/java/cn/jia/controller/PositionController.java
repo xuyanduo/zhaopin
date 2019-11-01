@@ -3,25 +3,20 @@ package cn.jia.controller;
 import cn.jia.common.ServerResponse;
 import cn.jia.domain.Positions;
 import cn.jia.domain.User;
-import cn.jia.exception.ErrorException;
 import cn.jia.service.PositionService;
 import cn.jia.service.UserService;
 import com.github.pagehelper.PageInfo;
 import com.google.common.collect.Lists;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.ibatis.annotations.Delete;
 import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.nio.channels.SeekableByteChannel;
 import java.util.List;
-import java.util.Scanner;
 
 /**
  * Created by jia on 2017/11/29.
@@ -45,7 +40,6 @@ public class PositionController {
         ServerResponse serverResponse = positionService.findAllBySocial(pageIndex,pageSize);
         PageInfo pageInfo =(PageInfo) serverResponse.getData();
         model.addAttribute("positions",pageInfo);
-        //request.setAttribute("pages",pageInfo.getPages());
         return "www/position";
     }
     @GetMapping("/getDetail")
@@ -84,8 +78,6 @@ public class PositionController {
              }
          }
         ServerResponse serverResponse = positionService.findByCondiction(pClassify,workSite,null,flag,keyWord,pageIndex,pageSize);
-        PageInfo pageInfo =(PageInfo)serverResponse.getData();
-      //  request.setAttribute("pages",pageInfo.getPages());
         return serverResponse;
     }
 
@@ -117,7 +109,6 @@ public class PositionController {
     public ServerResponse collect(HttpSession session,int pId){
         String username =(String) session.getAttribute("username");
         if (StringUtils.isEmpty(username)){
-            //throw  new ErrorException("请登录");
             return ServerResponse.buildErrorMsg("请登录");
         }
         User user = userService.findByUsername(username);
