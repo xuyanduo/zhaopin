@@ -56,6 +56,11 @@
                                 <li>
                                     <a href="/admin/user" ><i class="icon-chevron-right sidebar-nav-indicator sidebar-nav-mini-hide"></i><i class="icon-gift sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">用户管理</span></a>
                                 </li>
+                                <li>
+                                    <a href="/admin/department" ><i
+                                            class="icon-chevron-right sidebar-nav-indicator sidebar-nav-mini-hide"></i><i class="icon-gift sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">部门管理</span></a>
+
+                                </li>
                             </ul>
                             <!-- END Sidebar Navigation -->
                         </div>

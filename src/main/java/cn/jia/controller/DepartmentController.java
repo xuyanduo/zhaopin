@@ -1,17 +1,18 @@
 package cn.jia.controller;
 
-import cn.jia.common.BusiRespCode;
+import cn.jia.common.ServerResponse;
 import cn.jia.dto.DepartmentDTO;
 import cn.jia.mapper.DepartmentMapper;
-
-import java.util.Date;
-
+import cn.jia.service.DepartmentService;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpSession;
+import java.util.Date;
 
 /**
  * Created by jia on 2017/12/30. 管理员控制器
@@ -23,41 +24,84 @@ public class DepartmentController {
 	@Autowired
 	private DepartmentMapper departmentMapper;
 
+	@Autowired
+    private DepartmentService departmentService;
+
 	// 展现简历
 	@RequiresRoles("admin")
 	@PostMapping("/add")
-	public String add(DepartmentDTO dto) {
+    @ResponseBody
+	public ServerResponse add(DepartmentDTO dto) {
 		try {
 			dto.setCreateTime(new Date());
 			departmentMapper.insertSelective(dto);
 		} catch (Exception e) {
-			return BusiRespCode.Department.ADD_FAIL.getMsg();
+			return ServerResponse.buildErrorMsg("添加部门失败！");
 		}
-
-		return BusiRespCode.Department.ADD_SUCCESS.getMsg();
+		return ServerResponse.buildSuccessMsg("添加部门成功！");
 	}
 
 	// 展现题库
 	@RequiresRoles("admin")
-	@GetMapping("/delete")
-	public String delete(String key) {
-		try {
-			departmentMapper.deleteByPrimaryKey(key);
-		} catch (Exception e) {
-			return BusiRespCode.Department.DELETE_FAIL.getMsg();
+	@DeleteMapping("/delete/{id}")
+    @ResponseBody
+	public ServerResponse delete(@PathVariable("id") String id,HttpSession session) {
+		String username =(String) session.getAttribute("username");
+		if (StringUtils.isEmpty(username)){
+			return ServerResponse.buildErrorMsg("请登录");
 		}
-
-		return BusiRespCode.Department.DELETE_SUCCESS.getMsg();
+		try {
+			departmentMapper.deleteByPrimaryKey(id);
+		} catch (Exception e) {
+			return ServerResponse.buildErrorMsg("删除失败！");
+		}
+		return ServerResponse.buildSuccessMsg("删除成功！");
 	}
 
 	@RequiresRoles("admin")
-	@PostMapping("/position")
-	public String update(DepartmentDTO dto) {
+    @ResponseBody
+	@PostMapping("/update")
+	public ServerResponse update(DepartmentDTO dto) {
 		try {
 			departmentMapper.updateByPrimaryKeySelective(dto);
-		} catch (Exception e) {
-			return BusiRespCode.Department.UPDATE_FAIL.getMsg();
+		}catch (Exception e) {
+			return ServerResponse.buildErrorMsg("修改失败！");
 		}
-		return BusiRespCode.Department.UPDATE_SUCCESS.getMsg();
+		return ServerResponse.buildSuccessMsg("修改成功！");
 	}
+
+    @GetMapping("/getById/{id}")
+    @ResponseBody
+    @RequiresRoles("admin")
+    public ServerResponse findById(@PathVariable String id, HttpSession session){
+        String username =(String) session.getAttribute("username");
+        if (StringUtils.isEmpty(username)){
+            return ServerResponse.buildErrorMsg("请登录");
+        }
+        return ServerResponse.buildSuccessData(departmentMapper.selectByPrimaryKey(id));
+    }
+
+    @RequiresRoles("admin")
+    @GetMapping("/manager")
+    public String show(Model model) {
+        model.addAttribute("department", departmentService.selectBySearch("", 1, 5));
+        return "manage/department";
+    }
+
+
+    @RequiresRoles("admin")
+    @GetMapping("/manager/findByPage")
+    @ResponseBody
+    public ServerResponse findByPage(@RequestParam(value = "condition", required = false) String condition,
+                                     @RequestParam(value = "pageIndex", defaultValue = "1", required = false) int pageIndex,
+                                     @RequestParam(value = "pageSize", defaultValue = "5", required = false) int pageSize) {
+
+        if (StringUtils.isEmpty(condition)) {
+            condition = null;
+        }
+        //0代表无限制
+        return ServerResponse.buildSuccessData(departmentService.selectBySearch(condition, pageIndex, pageSize));
+
+    }
+
 }

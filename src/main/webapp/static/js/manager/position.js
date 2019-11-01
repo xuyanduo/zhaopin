@@ -163,7 +163,7 @@ $(function () {
                            "<span>"+type+"</span>\n" +
                            "<span style='display: none;'>"+position.list[i].id+"</span>"+
                            "<span>\n"+
-                           " <button href=\"#\" class=\"btn btn-primary updateModel\">详情修改</button>\n" +
+                           " <button href=\"#\" class=\"btn btn-primary updateModel\">修改</button>\n" +
                            "<a href=\"javaScript:void(0);\" class=\"btn btn-danger deleteBtn\">删除</a>\n" +
                            " </span>\n" +
                            "</li>";

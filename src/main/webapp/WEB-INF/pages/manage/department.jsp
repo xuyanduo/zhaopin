@@ -14,7 +14,9 @@
 		<link rel="stylesheet" href="${contextPath}/static/css/bootstrap.css">
         <link rel="stylesheet" href="${contextPath}/static/css/font-awesome.min.css">
         <link rel="stylesheet" href="${contextPath}/static/css/manager/main.css">
-        <link rel="stylesheet" href="${contextPath}/static/css/manager/position.css" />
+
+        <link rel="stylesheet" href="${contextPath}/static/css/manager/department.css" />
+
 		<script src="${contextPath}/static/js/manager/vendor/jquery-2.2.4.min.js"></script>
 		<script src="${contextPath}/static/js/manager/vendor/bootstrap.min.js"></script>
 		<script src="${contextPath}/static/js/manager/plugins.js"></script>
@@ -109,7 +111,8 @@
 							<form class="form-inline" style="float: left;">
 
 								<div class="form-group">
-									<input type="text" class="form-control" id="exampleInputName2" placeholder="输入相应的职位的名称">
+									<input type="text" class="form-control" id="exampleInputName2"
+										   placeholder="输入相应的部门名称">
 								</div>
 
 								<a  href="javaScript:void(0);" class="btn btn-primary positionQuery">查询</a>
@@ -119,32 +122,21 @@
 						<div id="table">
 							<ul>
 								<li>ID</li>
-								<li>分类</li>
-								<li>部门</li>
-								<li>职位</li>
-								<li style="width: 213px;">类型</li>
+								<li>名称</li>
+								<li>创建时间</li>
 								<li style="width: 193px;">操作</li>
 							</ul>
 							<ul id="ulContainer">
-
 							</ul>
-
 						</div>
-                        
-                        
                       <div id="page" style="float: right;margin-right: 145px;position: relative;top: -15px;">
-						  <span id="totalPage" style="display: none">${position.pages}</span>
+						  <span id="totalPage" style="display: none">${department.pages}</span>
 						  <ul class="pagination" id="pagination-demo"></ul>
 			        </div>
-                        
-                        
                     </div>
-          
                 </div>
             </div>
         </div>
-        
-        
 
         <!-- 新增 -->
 		<div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -152,53 +144,13 @@
 		    <div class="modal-content">
 		      <div class="modal-header">
 		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-		        <h4 class="modal-title" id="myModalAdd">新增职位</h4>
+		        <h4 class="modal-title" id="myModalAdd">新增部门</h4>
 		      </div>
 		      <div class="modal-body">
 		        <form>
 					  <div class="form-group">
-					    <label for="question">职位名称：</label>
-					    <input type="text" class="form-control" id="addPName" placeholder="输入职位名称">
-					  </div>
-					<div class="form-group">
-						<label for="text">工作地点:</label>
-						<input type="text" class="form-control" id="addWorkSite" placeholder="输入工作地点"></input>
-					</div>
-					  <div class="form-group">
-					    <label for="text">分类：</label>
-					    <select class="form-group" id="addFlag">
-					    	<option value="2">校园招聘</option>
-					    	<option value="1">社会招聘</option>
-					    </select>
-					  </div>
-					  <div class="form-group">
-					    <label for="exampleInputFile">类型：</label>
-					    <select class="form-group" id="addClassify">
-					    	<option>技术</option>
-					    	<option>销售</option>
-					        <option>管理</option>
-					    </select>
-					  </div>
-					<div class="form-group">
-						<label for="exampleInputFile">部门：</label>
-						<select class="form-group" id="addDepartment">
-							<option>技术部</option>
-							<option>销售部</option>
-							<option>人力部</option>
-						</select>
-					</div>
-
-					<div class="form-group">
-					    <label for="text">岗位类型描述：</label>
-				        <input type="text" class="form-control" id="addDescribe" placeholder="输入相应的描述"></input>
-					</div>
-					 <div class="form-group">
-					    <label for="text">岗位职责：</label>
-					    <textarea class="form-control" id="addRespon" placeholder="输入职责,每一句以<br>结尾"></textarea>
-					  </div>
-					  <div class="form-group">
-					    <label for="text">岗位要求：</label>
-					    <textarea  class="form-control" id="addRequire" placeholder="输入要求，每一句以<br>结尾"></textarea>
+					    <label for="question">部门名称：</label>
+					    <input type="text" class="form-control" id="addPName" placeholder="输入部门名称">
 					  </div>
 				</form>
 		      </div>
@@ -212,60 +164,19 @@
 		
 			
 		
-		<!--岗位更新-->
-			
+		<!--更新-->
 		 <div class="modal fade" id="update" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 		  <div class="modal-dialog" role="document">
 		    <div class="modal-content">
 		      <div class="modal-header">
 		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-		        <h4 class="modal-title" id="myModalLabel">职位详情</h4>
+		        <h4 class="modal-title" id="myModalLabel">部门详情</h4>
 		      </div>
 		      <div class="modal-body">
 		        <form>
 					  <div class="form-group">
-					    <label for="question">职位名称：</label>
+					    <label for="question">部门名称：</label>
 					    <input type="text" class="form-control" id="updatePName">
-					  </div>
-					<div class="form-group">
-						<label for="text">工作地点:</label>
-						<input type="text" class="form-control" id="updateWorkSite" ></input>
-					</div>
-					  <div class="form-group">
-					    <label for="text">分类：</label>
-					    <select class="form-group" id="updateFlag">
-					    	<option value="2">校园招聘</option>
-					    	<option value="1">社会招聘</option>
-					    </select>
-					  </div>
-					  <div class="form-group">
-					    <label for="exampleInputFile">类型：</label>
-					    <select class="form-group" id="updateClassify">
-					    	<option>技术</option>
-					    	<option>销售</option>
-					        <option>管理</option>
-					    </select>
-					  </div>
-					<div class="form-group">
-						<label for="exampleInputFile">部门：</label>
-						<select class="form-group" id="updateDepartment">
-							<option>技术部</option>
-							<option>销售部</option>
-							<option>人力部</option>
-						</select>
-					</div>
-					   <div class="form-group">
-					    <label for="text">岗位类型描述：</label>
-				        <input type="text" class="form-control" id="updateDesc" ></input>
-					  </div>
-					 <div class="form-group">
-					    <label for="text">岗位职责：</label>
-					    <textarea class="form-control" id="updateRespon" placeholder="输入职责,每一句以<br>结尾">
-						</textarea>
-					  </div>
-					  <div class="form-group">
-					    <label for="text">岗位要求：</label>
-					    <textarea  class="form-control" id="updateRequire" placeholder="输入要求,每一句以<br>结尾"></textarea>
 					  </div>
 				</form>
 		      </div>
@@ -276,9 +187,7 @@
 		    </div>
 		  </div>
 		</div>
-		<script src="${contextPath}/static/js/manager/position.js"></script>
-		<script src="${contextPath}/static/js/manager/positionPage.js"></script>
-       
-
+		<script src="${contextPath}/static/js/manager/department.js"></script>
+		<script src="${contextPath}/static/js/manager/departmentPage.js"></script>
     </body>
 </html>

@@ -14,7 +14,7 @@ $(function () {
                 event.preventDefault();
                 $.ajax({
                     type: 'get',
-                    url: '/position/manager/findByPage',
+                    url: '/department/manager/findByPage',
                     data: {
                         pageIndex: page,
                         condition: condition
@@ -23,22 +23,14 @@ $(function () {
                     success: function (data) {
                         if (data.status == 1) {
                             var str = "";
-                            var position = data.data;
-                            for (var i = 0; i < position.list.length; i++) {
-                                console.log(position.list[i]);
-                                var type = "";
-                                if (position.list[i].flag == 1) {
-                                    type = "社会招聘";
-                                } else {
-                                    type = "校园招聘";
-                                }
+                            var department = data.data;
+                            for (var i = 0; i < department.list.length; i++) {
+                                console.log(department.list[i]);
                                 str += "<li>\n" +
                                     "<span>" + (1 + i) + "</span>\n" +
-                                    "<span>" + position.list[i].pClassify + "</span>\n" +
-                                    "<span>" + position.list[i].pDepartment + "</span>\n" +
-                                    "<span>" + position.list[i].pName + "</span>\n" +
-                                    "<span>" + type + "</span>\n" +
-                                    "<span style='display: none;'>" + position.list[i].id + "</span>" +
+                                    "<span>" + department.list[i].name + "</span>\n" +
+                                    "<span>" + department.list[i].createTime + "</span>\n" +
+                                    "<span style='display: none;'>"+department.list[i].id+"</span>"+
                                     "<span>\n" +
                                     " <button href=\"#\" class=\"btn btn-primary updateModel\">修改</button>\n" +
                                     "<a href=\"javaScript:void(0);\" class=\"btn btn-danger deleteBtn\">删除</a>\n" +
@@ -47,12 +39,6 @@ $(function () {
                             }
                             var trNode = $('#ulContainer');
                             trNode.html(str);
-                            var script = document.createElement("script");
-                            /*script.src = "../../static/js/manager/position.js";
-                            document.body.appendChild(script);
-                            script = document.createElement("script");
-                            script.src = "../../static/js/manager/positionPage.js";
-                            document.body.appendChild(script);*/
                         } else {
                             swal(data.msg, "", "error");
                         }
@@ -64,5 +50,4 @@ $(function () {
             }
         });
     }
-
 })

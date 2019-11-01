@@ -5,7 +5,6 @@ import com.github.pagehelper.Dialect;
 import com.github.pagehelper.PageHelper;
 import org.apache.ibatis.plugin.Interceptor;
 import org.mybatis.spring.SqlSessionFactoryBean;
-import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,11 +13,10 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import tk.mybatis.spring.annotation.MapperScan;
 
 import javax.sql.DataSource;
 import java.util.Properties;
-
-import static com.github.pagehelper.Dialect.mysql;
 
 
 /**
