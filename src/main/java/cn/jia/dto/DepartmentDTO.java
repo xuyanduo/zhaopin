@@ -1,11 +1,13 @@
 package cn.jia.dto;
 
+import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.Date;
 
 @Table(name="department")
 public class DepartmentDTO {
 
+	@Id
     private String name;
 
     private Date createTime;
