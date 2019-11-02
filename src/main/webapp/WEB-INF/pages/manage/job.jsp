@@ -155,7 +155,7 @@
 		        <form>
 					  <div class="form-group">
 					    <label for="question">类别名称：</label>
-					    <input type="text" class="form-control" id="addPName" placeholder="输入类别名称">
+					    <input type="text" class="form-control" id="addPName" placeholder="输入类别名mysql称">
 					  </div>
 				</form>
 		      </div>
