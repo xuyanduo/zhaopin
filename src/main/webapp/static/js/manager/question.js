@@ -196,5 +196,30 @@ $(function () {
         })
 
     })
-
+    initQuestType();
 })
+
+function initQuestType(){
+    $.ajax({
+        type:'get',
+        url:'/questType/manager/findByPage',
+        dataType:'json',
+        success:function (data) {
+            if (data.status == 1) {
+                var str = "";
+                var questType = data.data;
+                for (var i = 0; i < questType.list.length; i++) {
+                    str = str + '<option>'+questType.list[i].name+'</option>';
+                }
+                var trNode = $('#updateSelect');
+                trNode.append(str);
+            } else {
+                swal(data.msg, "", "error");
+            }
+        },
+        error:function () {
+            swal('出现错误',"","error");
+        }
+    });
+
+}

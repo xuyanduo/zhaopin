@@ -71,6 +71,11 @@
                                             class="icon-chevron-right sidebar-nav-indicator sidebar-nav-mini-hide"></i><i class="icon-gift sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">职位类别管理</span></a>
 
                                 </li>
+                                <li>
+                                    <a href="/admin/questionType" ><i
+                                            class="icon-chevron-right sidebar-nav-indicator sidebar-nav-mini-hide"></i><i class="icon-gift sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">问卷类别管理</span></a>
+
+                                </li>
                             </ul>
                             <!-- END Sidebar Navigation -->
                         </div>
@@ -173,9 +178,9 @@
 					  <div class="form-group">
 					    <label for="exampleInputFile">分类：</label>
 					    <select class="form-group" id="classifySelect">
-					    	<option>逻辑</option>
-					    	<option>技术</option>
-					        <option>人力资源</option>
+<%--					    	<option>逻辑</option>--%>
+<%--					    	<option>技术</option>--%>
+<%--					        <option>人力资源</option>--%>
 					    </select>
 					  </div>
 					
@@ -215,9 +220,9 @@
 					  <div class="form-group">
 					    <label for="exampleInputFile">分类：</label>
 					    <select class="form-group" id="updateSelect">
-					    	<option>逻辑</option>
-					    	<option>技术</option>
-					        <option>人力资源</option>
+<%--					    	<option>逻辑</option>--%>
+<%--					    	<option>技术</option>--%>
+<%--					        <option>人力资源</option>--%>
 					    </select>
 					  </div>
 					

@@ -140,7 +140,7 @@
 							</ul>
 						</div>
                       <div id="page" style="float: right;margin-right: 145px;position: relative;top: -15px;">
-						  <span id="totalPage" style="display: none">${job.pages}</span>
+						  <span id="totalPage" style="display: none">${questType.pages}</span>
 						  <ul class="pagination" id="pagination-demo"></ul>
 			        </div>
                     </div>
@@ -196,7 +196,7 @@
 		    </div>
 		  </div>
 		</div>
-		<script src="${contextPath}/static/js/manager/job.js"></script>
-		<script src="${contextPath}/static/js/manager/jobPage.js"></script>
+		<script src="${contextPath}/static/js/manager/questType.js"></script>
+		<script src="${contextPath}/static/js/manager/questTypePage.js"></script>
     </body>
 </html>

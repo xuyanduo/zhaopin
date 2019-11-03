@@ -8,9 +8,8 @@ import javax.persistence.Table;
 import java.util.Date;
 
 @Data
-@Table(name="department")
-public class DepartmentDTO {
-
+@Table(name="questType")
+public class QuestTypeDTO {
     @Id
     private Integer id;
     private String name;
@@ -18,6 +17,4 @@ public class DepartmentDTO {
     private Date createTime;
     private Date updateTime;
 
-    public static class QuestTypeDTO {
-    }
 }
