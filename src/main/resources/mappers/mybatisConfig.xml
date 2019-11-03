@@ -11,7 +11,6 @@
 
     <mappers>
         <mapper resource="mappers/CollectionMapper.xml"></mapper>
-        <mapper resource="mappers/GradeMapper.xml"></mapper>
         <mapper resource="mappers/InformationMapper.xml"></mapper>
         <mapper resource="mappers/PositionsMapper.xml"></mapper>
         <mapper resource="mappers/QuestionMapper.xml"></mapper>

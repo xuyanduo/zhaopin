@@ -15,7 +15,7 @@ public interface QuestionService {
     ServerResponse update(Question question);
     ServerResponse delete(Integer id);
     ServerResponse showRandomByType(String type);
-    ServerResponse getSrcore(List<HashMap<Object,Object>> map, int userId,String classify);
+    ServerResponse getSrcore(List<AnswerDto> map, int userId,String classify);
     ServerResponse findAll(int pageIndex,int pageSize);
     ServerResponse findById(Integer id);
     ServerResponse findByType(String type,int pageIndex,int pageSize);

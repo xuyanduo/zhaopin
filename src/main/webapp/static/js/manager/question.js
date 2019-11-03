@@ -197,6 +197,7 @@ $(function () {
 
     })
     initQuestType();
+
 })
 
 function initQuestType(){
@@ -212,7 +213,9 @@ function initQuestType(){
                     str = str + '<option>'+questType.list[i].name+'</option>';
                 }
                 var trNode = $('#updateSelect');
+                var node = $('#classifySelect');
                 trNode.append(str);
+                node.append(str);
             } else {
                 swal(data.msg, "", "error");
             }

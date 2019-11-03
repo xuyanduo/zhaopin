@@ -140,6 +140,8 @@ CREATE TABLE `grade` (
   `user_id` int(11) NOT NULL COMMENT '用户id',
   `score` float DEFAULT NULL COMMENT '分数',
   `classify` varchar(10) DEFAULT 'null' COMMENT '类型',
+  `orig_quest` varchar(10) DEFAULT 'null' COMMENT '初始答案',
+  `score_detail` varchar(10) DEFAULT 'null' COMMENT '分数详情',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='成绩表';
 /*!40101 SET character_set_client = @saved_cs_client */;

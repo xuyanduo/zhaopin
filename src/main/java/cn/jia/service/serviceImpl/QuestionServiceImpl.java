@@ -5,9 +5,11 @@ import cn.jia.domain.Grade;
 import cn.jia.domain.Question;
 import cn.jia.dto.AnswerDto;
 import cn.jia.dto.QuestionDto;
+import cn.jia.dto.ScoreDetail;
 import cn.jia.mapper.GradeMapper;
 import cn.jia.mapper.QuestionMapper;
 import cn.jia.service.QuestionService;
+import cn.jia.support.grade.ScoreParseSupport;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.google.common.collect.Lists;
@@ -15,7 +17,9 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.PostConstruct;
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * Created by jia on 2017/12/5.
@@ -30,6 +34,9 @@ public class QuestionServiceImpl implements QuestionService {
     private GradeMapper gradeMapper;
 
     private  List<String>  ans = null;//存放答案的列表
+
+
+
     //查询全部
     public ServerResponse findAll(int pageIndex,int pageSize){
         PageHelper.startPage(pageIndex,pageSize);
@@ -119,20 +126,24 @@ public class QuestionServiceImpl implements QuestionService {
 
     }
     //计算成绩
-    public ServerResponse getSrcore(List<HashMap<Object,Object>> map, int userId,String classify){
+    public ServerResponse getSrcore(List<AnswerDto> map, int userId,String classify){
         Grade grade = gradeMapper.selectByUserId(userId);
         if (grade != null){
             return ServerResponse.buildErrorMsg("不可重复测试");
         }
         Integer a = 0;
         if (map.size()>0 && map.get(0)!=null) {  //至少有选一道题
-            List<AnswerDto> answerDtos = change(map); //转换成List<AnsDto>
+//            List<AnswerDto> answerDtos = change(map); //转换成List<AnsDto>
             // 计算分数
-            a = countScore(answerDtos);
+            List<Question> realAnswerList = questionMapper.findByType(classify);
+            Map<Integer,String> realAnswer = realAnswerList.stream().collect(Collectors.toMap(Question::getId,Question::getqAnswer));
+            List<ScoreDetail>  scoreList = ScoreParseSupport.parse(map,realAnswer);
+            grade.setScore(ScoreParseSupport.getScore(scoreList));
+            grade.setOrigQuest(ScoreParseSupport.getOrigQuest(scoreList));
+            grade.setScoreDetail(ScoreParseSupport.getScoreDetail(scoreList));
             //需要把ans置空
             ans = Lists.newArrayList();
         }
-        grade = new Grade();
         grade.setScore(a.floatValue());
         grade.setUserId(userId);
         grade.setClassify(classify);
@@ -154,59 +165,5 @@ public class QuestionServiceImpl implements QuestionService {
         return questionDto;
      }
 
-
-    /**
-     * List<Map>对象转换成List<AnsDto>
-     * @param map
-     * @return
-     */
-     private List change(List<HashMap<Object,Object>> map){
-         List<AnswerDto> answerDtos = Lists.newArrayList();
-         for (int i = 0;i<map.size();i++){
-             AnswerDto answerDto = new AnswerDto();
-             //每一个子元素就是一个Map对象
-             HashMap hashMap = map.get(i);
-             Set<String> keys = hashMap.keySet();
-             Iterator iterator = keys.iterator();
-             while (iterator.hasNext()){
-                 String key = (String) iterator.next();
-                 if (key.equals("i")){
-                     Object value = hashMap.get(key);
-                     answerDto.setId((int)value);
-                 }else {
-                     Object value = hashMap.get(key);
-                     //进行1/2/3/4 转换成A/B/C/D
-                     String answer = changeNum((String) value);
-                     answerDto.setAnswer(answer);
-                 }
-             }
-             answerDtos.add(answerDto);
-         }
-         return answerDtos;
-     }
-     private String changeNum(String num){
-         switch (num){
-             case "1":
-                return "A";
-             case "2":
-                 return "B";
-             case "3":
-                 return "C";
-             case "4":
-                 return "D";
-             default:
-                 return null;
-         }
-     }
-     private int countScore(List<AnswerDto> answerDtos){
-         int a = 0;
-         for (int i = 0; i < answerDtos.size(); i++) {
-             AnswerDto answerDto = answerDtos.get(i);
-            if (ans.get(answerDto.getId()-1).equals(answerDto.getAnswer())){
-                a++;
-            }
-         }
-         return  a;
-     }
 
 }

@@ -7,7 +7,10 @@ import cn.jia.dto.AnswerDto;
 import cn.jia.exception.ErrorException;
 import cn.jia.service.QuestionService;
 import cn.jia.service.UserService;
+import cn.jia.support.grade.ScoreParseSupport;
 import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
+import net.sf.json.util.JSONUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +20,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -64,7 +68,7 @@ public class QuestionController {
             return ServerResponse.buildErrorMsg("请登录");
         }
         User user = userService.findByUsername(username);
-        List<HashMap<Object,Object>> map1 = change(map);
+        List<AnswerDto> map1 = ScoreParseSupport.transToDetailDto(map);
         System.out.println(map1);
      //   return  null;
        return questionService.getSrcore(map1,user.getId(),classify);
@@ -150,10 +154,5 @@ public class QuestionController {
         return questionService.delete(id);
     }
 
-    private static List change(String map){
-        Map mapClass = new HashMap();
-        JSONArray jsonArray = new JSONArray();
-        List<HashMap<String,String>> map1 = (List<HashMap<String,String>>) JSONArray.toList(JSONArray.fromObject(map),mapClass.getClass());
-        return map1;
-    }
+
 }
