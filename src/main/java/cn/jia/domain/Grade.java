@@ -14,4 +14,18 @@ public class Grade {
     private String origQuest;
 
     private String scoreDetail;
+
+    public Grade(Integer id, Integer userId, Float score,String classify) {
+        this.id = id;
+        this.userId = userId;
+        this.score = score;
+        this.classify = classify;
+    }
+
+    public Grade() {
+        super();
+    }
+
+
+
 }

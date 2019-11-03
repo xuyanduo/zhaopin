@@ -5,10 +5,10 @@
     <constructor >
       <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="user_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
-      <arg column="score" jdbcType="REAL" javaType="java.lang.Float" />
-      <arg column="classify" javaType="java.lang.String"/>
+      <arg column="score" jdbcType="FLOAT" javaType="java.lang.Float" />
+      <arg column="classify" jdbcType="VARCHAR" javaType="java.lang.String"/>
     </constructor>
-  </resultMap>
+</resultMap>
   <sql id="Base_Column_List" >
     id, user_id, score,classify
   </sql>
