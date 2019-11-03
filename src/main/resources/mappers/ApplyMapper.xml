@@ -7,20 +7,49 @@
             <arg column="user_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
             <arg column="p_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
             <arg column="resume_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+            <arg column="state" jdbcType="INTEGER" javaType="java.lang.Integer" />
+            <arg column="handleUser" jdbcType="INTEGER" javaType="java.lang.Integer" />
+            <arg column="handleTime"  javaType="java.util.Date" />
         </constructor>
     </resultMap>
 
     <sql id="Base_Column_List" >
-    id, user_id, p_id,resume_id
+    id, user_id, p_id,resume_id,state,handle_time,handle_user
     </sql>
 
     <insert id="insert" parameterType="cn.jia.domain.Apply">
-          insert into apply (id, user_id, p_id,resume_id)
-    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{pId,jdbcType=INTEGER},#{resumeId,jdbcType=INTEGER})
+          insert into apply (id, user_id, p_id,resume_id,state,handle_time,handle_user)
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{pId,jdbcType=INTEGER},#{resumeId,jdbcType=INTEGER}
+    ,{state},{handleTime},{handleUser}
+    )
     </insert>
 
     <select id="findByUserIdAndPId" resultMap="BaseResultMap" parameterType="map">
         SELECT <include refid="Base_Column_List" />
         FROM apply WHERE user_id = #{userId} AND p_id = #{pId}
+    </select>
+
+    <update id="updateState" parameterType="map">
+        update apply
+        set state = #{state},
+        handle_user = #{handleUser},
+        handle_time = #{handleTime}
+        from apply
+        where id = #{id}
+    </update>
+
+    <select id="findApplys" resultType="cn.jia.dto.ApplyDto">
+        select
+        a.id as applyId,
+        u.username as userName,
+        p.p_name as positionName,
+        a.state
+        from apply a
+        left join `user` u on u.id = a.user_id
+        left join positions p on p.id = a.p_id
+        <if test="userId != null">
+            where a.user_id = #{userId}
+        </if>
+        order by a.id desc
     </select>
 </mapper>

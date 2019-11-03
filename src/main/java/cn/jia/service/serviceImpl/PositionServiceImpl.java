@@ -15,7 +15,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by jia on 2017/12/3.
@@ -201,7 +203,7 @@ public class PositionServiceImpl implements PositionService {
         Positions positions = positionsMapper.selectByPrimaryKey(pId);
         apply = new Apply();
         apply.setUserId(userId);
-        apply.setpId(pId);
+        apply.setPId(pId);
         apply.setResumeId(resumeId);
         int i = applyMapper.insert(apply);
         Resume resume = new Resume();
@@ -259,6 +261,28 @@ public class PositionServiceImpl implements PositionService {
         return ServerResponse.buildSuccessData(positionsDtos);
     }
 
+    @Override
+    public ServerResponse updateApply(Integer state,Integer userId,Integer applyId){
+         Map<String,Object> map = new HashMap<>(5);
+         map.put("state",state);
+         map.put("handleUser",userId);
+         map.put("applyId",applyId);
+         map.put("handleTime",new Date());
+         int i = applyMapper.updateState(map);
+        if (i<1){
+            return ServerResponse.buildErrorMsg("操作失败");
+        }
+        return ServerResponse.buildSuccessMsg("操作成功");
+    }
+
+    @Override
+    public ServerResponse findAllApply(Integer pageIndex,Integer pageSize,Integer userId){
+        if(null != pageIndex && null != pageSize){
+            PageHelper.startPage(pageIndex,pageSize);
+        }
+        return ServerResponse.buildSuccessData(applyMapper.findApplys(userId));
+    }
+
     /*------------------------校园招聘---------------------------------------*/
     //查询全部
     public ServerResponse findBySchool(int pageIndex,int pageSize){
@@ -296,7 +320,4 @@ public class PositionServiceImpl implements PositionService {
        positionsDto.setFlag(positions.getFlag());
        return positionsDto;
     }
-
-
-
 }

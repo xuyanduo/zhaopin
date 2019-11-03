@@ -22,4 +22,6 @@ public interface PositionService {
     ServerResponse findByRandom(Integer flag);
     ServerResponse findById(int  id);
     ServerResponse findAll(int pageIndex,int pageSize);
+    ServerResponse updateApply(Integer state,Integer userId,Integer applyId);
+    ServerResponse findAllApply(Integer pageIndex,Integer pageSize,Integer userId);
 }

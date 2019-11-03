@@ -185,5 +185,37 @@ public class PositionController {
         return positionService.deleteById(id);
     }
 
+    @RequiresRoles("admin")
+    @PutMapping("/admin/apply/update/state/{applyId}")
+    public ServerResponse applyUpdate(@PathVariable int applyId,@RequestParam("state") Integer state, HttpSession session){
+        String username =(String) session.getAttribute("username");
+        if (StringUtils.isEmpty(username)){
+            return ServerResponse.buildErrorMsg("请登录");
+        }
+        User user = userService.findByUsername(username);
+        return positionService.updateApply(state,user.getId(),applyId);
+    }
 
+
+    @RequiresRoles("admin")
+    @GetMapping("/manager/apply/findByPage")
+    @ResponseBody
+    public ServerResponse findByPage(
+                                     @RequestParam(value = "pageIndex", defaultValue = "1", required = false) int pageIndex,
+                                     @RequestParam(value = "pageSize", defaultValue = "5", required = false) int pageSize) {
+        return positionService.findAllApply(pageIndex,pageSize,null);
+    }
+
+    @GetMapping("/user/apply/findByPage")
+    @ResponseBody
+    public ServerResponse findByPageOne(
+            @RequestParam(value = "pageIndex", defaultValue = "1", required = false) int pageIndex,
+            @RequestParam(value = "pageSize", defaultValue = "5", required = false) int pageSize,HttpSession session) {
+        String username =(String) session.getAttribute("username");
+        if (StringUtils.isEmpty(username)){
+            return ServerResponse.buildErrorMsg("请登录");
+        }
+        User user = userService.findByUsername(username);
+        return positionService.findAllApply(pageIndex,pageSize,user.getId());
+    }
 }
