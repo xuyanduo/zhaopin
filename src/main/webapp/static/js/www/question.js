@@ -65,4 +65,37 @@ $(function () {
         });
 
     })
+    initQuestType();
 })
+
+
+function initQuestType(){
+    $.ajax({
+        type:'get',
+        url:'/questType/manager/findByPage',
+        dataType:'json',
+        success:function (data) {
+            if (data.status == 1) {
+                var str = "";
+                var questType = data.data;
+                var template = '';
+                for (var i = 0; i < questType.list.length; i++) {
+                    if(i ==0){
+                        template  = '<input type="radio" checked="checked" name="type" value="'+ questType.list[i].name+'">'+questType.list[i].name;
+                    }else{
+                        template = '<input type="radio" name="type" value="'+ questType.list[i].name+'">'+questType.list[i].name;
+                    }
+                    str = str + template;
+                }
+                var trNode = $('#title');
+                trNode.append(str);
+            } else {
+                swal(data.msg, "", "error");
+            }
+        },
+        error:function () {
+            swal('出现错误',"","error");
+        }
+    });
+
+}

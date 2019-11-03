@@ -66,6 +66,11 @@
                                             class="icon-chevron-right sidebar-nav-indicator sidebar-nav-mini-hide"></i><i class="icon-gift sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">职位类别管理</span></a>
 
                                 </li>
+                                <li>
+                                    <a href="/admin/questionType" ><i
+                                            class="icon-chevron-right sidebar-nav-indicator sidebar-nav-mini-hide"></i><i class="icon-gift sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">问卷类别管理</span></a>
+
+                                </li>
                             </ul>
                             <!-- END Sidebar Navigation -->
                         </div>

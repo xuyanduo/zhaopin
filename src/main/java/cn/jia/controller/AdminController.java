@@ -58,4 +58,9 @@ public class AdminController {
     public String job(){
         return "redirect:/job/manager";
     }
+    @RequiresRoles("admin")
+    @GetMapping("/questionType")
+    public String questType(){
+        return "redirect:/questType/manager";
+    }
 }

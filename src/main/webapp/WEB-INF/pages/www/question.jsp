@@ -73,9 +73,9 @@
         <div id="title">
 			<h3>答卷问答<small>请根据你选择的职位选择下面的类型，没有匹配的请选择逻辑类型</small></h3>
 			<div>
-				<input type="radio" checked="checked" name="type" value="逻辑">逻辑
-				<input type="radio"  name="type" value="技术"/>技术
-				<input type="radio"  name="type" value="人力资源"/>人力资源
+<%--				<input type="radio" checked="checked" name="type" value="逻辑">逻辑--%>
+<%--				<input type="radio"  name="type" value="技术"/>技术--%>
+<%--				<input type="radio"  name="type" value="人力资源"/>人力资源--%>
 			</div>
         </div>
         <div id = "question">

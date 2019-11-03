@@ -101,8 +101,9 @@
             <div class="shaixuan">
             	<span class="a">工作地点：</span>
 				<ul class="work">
-					<li class="B"><a href="javascript:void(0)">深圳</a></li>
-					<li class="B"><a href="javascript:void(0)">广州</a></li>
+					<li class="B"><a href="javascript:void(0)">太原</a></li>
+					<li class="B"><a href="javascript:void(0)">上海</a></li>
+					<li class="B"><a href="javascript:void(0)">杭州</a></li>
 				</ul>
             </div>
             
@@ -110,12 +111,12 @@
             <div class="shaixuan">
             	<span class="a">职位类别：</span>
 				<ul class="work">
-					<li  class="B"><a href="javascript:void(0)">技术.</a></li>
-					<li  class="B"><a href="javascript:void(0)">管理.</a></li>
-					<li  class="B"><a href="javascript:void(0)">服务.</a></li>
-					<li  class="B"><a href="javascript:void(0)">财务.</a></li>
-					<li  class="B"><a href="javascript:void(0)">人力资源.</a></li>
-					<li  class="B"><a href="javascript:void(0)">销售.</a></li>
+<%--					<li  class="B"><a href="javascript:void(0)">技术.</a></li>--%>
+<%--					<li  class="B"><a href="javascript:void(0)">管理.</a></li>--%>
+<%--					<li  class="B"><a href="javascript:void(0)">服务.</a></li>--%>
+<%--					<li  class="B"><a href="javascript:void(0)">财务.</a></li>--%>
+<%--					<li  class="B"><a href="javascript:void(0)">人力资源.</a></li>--%>
+<%--					<li  class="B"><a href="javascript:void(0)">销售.</a></li>--%>
 				</ul>
             </div>
             

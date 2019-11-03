@@ -71,7 +71,31 @@ $(function () {
         query();
     });
 
-
+    searchPostionType();
     
 
 })
+
+function searchPostionType(){
+    $.ajax({
+        type:'get',
+        url:'/job/manager/findByPage',
+        dataType:'json',
+        success:function (data) {
+            if (data.status == 1) {
+                var str = "";
+                var department = data.data;
+                for (var i = 0; i < department.list.length; i++) {
+                    str = str +'<li  class="B"><a href="javascript:void(0)">'+department.list[i].name+'</a></li>';
+                }
+                var trNode = $('.work');
+                trNode.append(str);
+            } else {
+                swal(data.msg, "", "error");
+            }
+        },
+        error:function () {
+            swal('出现错误',"","error");
+        }
+    });
+}
