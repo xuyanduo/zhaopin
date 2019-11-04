@@ -29,7 +29,7 @@ public class QuestTypeServiceImpl implements QuestTypeService {
         if (pageNum != null && pageSize != null) {
             PageHelper.startPage(pageNum, pageSize);
         }
-        Example example = new Example(DepartmentDTO.class);
+        Example example = new Example(QuestTypeDTO.class);
         if (StringUtils.isNotBlank(search)) {
             example.createCriteria().andLike("name", "%"+search.trim()+"%");
         }

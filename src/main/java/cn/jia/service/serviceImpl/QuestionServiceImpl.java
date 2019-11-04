@@ -13,12 +13,14 @@ import cn.jia.support.grade.ScoreParseSupport;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.google.common.collect.Lists;
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.PostConstruct;
-import java.util.*;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
@@ -126,29 +128,30 @@ public class QuestionServiceImpl implements QuestionService {
 
     }
     //计算成绩
-    public ServerResponse getSrcore(List<AnswerDto> map, int userId,String classify){
+    public ServerResponse getSrcore(List<AnswerDto> map, int userId, String classify) {
         Grade grade = gradeMapper.selectByUserId(userId);
-        if (grade != null){
+        if (grade != null) {
             return ServerResponse.buildErrorMsg("不可重复测试");
         }
-        Integer a = 0;
-        if (map.size()>0 && map.get(0)!=null) {  //至少有选一道题
-//            List<AnswerDto> answerDtos = change(map); //转换成List<AnsDto>
-            // 计算分数
-            List<Question> realAnswerList = questionMapper.findByType(classify);
-            Map<Integer,String> realAnswer = realAnswerList.stream().collect(Collectors.toMap(Question::getId,Question::getqAnswer));
-            List<ScoreDetail>  scoreList = ScoreParseSupport.parse(map,realAnswer);
-            grade.setScore(ScoreParseSupport.getScore(scoreList));
-            grade.setOrigQuest(ScoreParseSupport.getOrigQuest(scoreList));
-            grade.setScoreDetail(ScoreParseSupport.getScoreDetail(scoreList));
-            //需要把ans置空
-            ans = Lists.newArrayList();
+        if (CollectionUtils.isEmpty(map)) {
+            return ServerResponse.buildErrorMsg("请至少作答一提才可提交，提交后不能再次测试！！！");
         }
+        Integer a = 0;
+        grade = new Grade();
+        // 计算分数
+        List<Question> realAnswerList = questionMapper.findByType(classify);
+        Map<Integer, String> realAnswer = realAnswerList.stream().collect(Collectors.toMap(Question::getId, Question::getqAnswer));
+        List<ScoreDetail> scoreList = ScoreParseSupport.parse(map, realAnswer);
+        grade.setScore(ScoreParseSupport.getScore(scoreList));
+        grade.setOrigQuest(ScoreParseSupport.getOrigQuest(scoreList));
+        grade.setScoreDetail(ScoreParseSupport.getScoreDetail(scoreList));
+        //需要把ans置空
+        ans = Lists.newArrayList();
         grade.setScore(a.floatValue());
         grade.setUserId(userId);
         grade.setClassify(classify);
         int i = gradeMapper.insert(grade);
-        if (i <1){
+        if (i < 1) {
             return ServerResponse.buildErrorMsg("出现错误");
         }
         return ServerResponse.buildSuccessMsg("插入成功");
