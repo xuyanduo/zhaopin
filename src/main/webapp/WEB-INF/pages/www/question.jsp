@@ -15,6 +15,7 @@
 		<script type="text/javascript" src="${contextPath}/static/js/jquery-1.11.3.js" ></script>
 		<script type="text/javascript" src="${contextPath}/static/js/bootstrap.min.js" ></script>
 	    <script type="text/javascript" src="${contextPath}/static/js/sweerAlert2.79.js"></script>
+	    <script  type="text/javascript" src="${contextPath}/static/js/jquery.simple.timer.js"></script>
 	</head>
 	<body>
 		<!--头部导航条-->
@@ -70,6 +71,9 @@
 				</div>
 			</div>
 		</nav>
+		<h1 class='timer' data-minutes-left=1></h1>
+		<h1 class='timer' data-seconds-left=30></h1>
+		
         <!--问答管理-->
         <div id="title">
 			<h3>答卷问答<small>请根据你选择的职位选择下面的类型，没有匹配的请选择逻辑类型</small></h3>

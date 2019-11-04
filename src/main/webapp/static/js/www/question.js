@@ -97,5 +97,11 @@ function initQuestType(){
             swal('出现错误',"","error");
         }
     });
-
+    $('.timer').startTimer({
+    	  onComplete: function(element){
+    		  swal("时间到");
+    		  $("#btnSubmit").click();
+    	  }
+    	})
+    
 }
