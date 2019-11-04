@@ -8,3 +8,18 @@
 	margin-left: 150px;
 	width: 800px;
 }
+
+.jst-hours,.jst-minutes,.jst-seconds,.jst-clearDiv{
+	float: left;
+}
+
+.timer{
+	font-size: 35px;
+	color: red;
+}
+
+.timer_div{
+	float: right;
+	width: 200px;
+	margin-right: 150px;
+}

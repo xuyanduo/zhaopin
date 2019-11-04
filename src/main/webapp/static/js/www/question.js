@@ -57,7 +57,7 @@ $(function () {
                 }else {
                     swal(data.msg,"","error");
                 }
-                setTimeout("location.reload(true)",2000);
+                //setTimeout("location.reload(true)",2000);
             },
             error:function () {
                 swal("出现错误","","error");
@@ -97,10 +97,12 @@ function initQuestType(){
             swal('出现错误',"","error");
         }
     });
+
     $('.timer').startTimer({
     	  onComplete: function(element){
     		  swal("时间到");
     		  $("#btnSubmit").click();
+              $("#btnSubmit").disable();
     	  }
     	})
     

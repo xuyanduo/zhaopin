@@ -71,9 +71,9 @@
 				</div>
 			</div>
 		</nav>
-		<h1 class='timer' data-minutes-left=1></h1>
-		<h1 class='timer' data-seconds-left=30></h1>
-		
+		<div class="timer_div">
+		   <h1 class='timer' data-minutes-left=1></h1>
+		</div>
         <!--问答管理-->
         <div id="title">
 			<h3>答卷问答<small>请根据你选择的职位选择下面的类型，没有匹配的请选择逻辑类型</small></h3>
