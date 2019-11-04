@@ -1,8 +1,11 @@
 package cn.jia.dto;
 
 import cn.jia.domain.Apply;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import org.apache.commons.lang3.StringUtils;
+
+import java.util.Date;
 
 @Data
 public class ApplyDto {
@@ -16,6 +19,8 @@ public class ApplyDto {
     private String userName;
     private Integer state;
     private String stateTrans;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    private Date applyTime;
 
     public String getStateTrans(){
         if(state == null){

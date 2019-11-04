@@ -67,6 +67,11 @@
 
                                 </li>
                                 <li>
+                                    <a href="/admin/apply" ><i
+                                            class="icon-chevron-right sidebar-nav-indicator sidebar-nav-mini-hide"></i><i class="icon-gift sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">职位申请进度管理</span></a>
+
+                                </li>
+                                <li>
                                     <a href="/admin/questionType" ><i
                                             class="icon-chevron-right sidebar-nav-indicator sidebar-nav-mini-hide"></i><i class="icon-gift sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">问卷类别管理</span></a>
 

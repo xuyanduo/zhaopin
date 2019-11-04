@@ -121,15 +121,11 @@
                     </header>
                     <div id="page-content">
 						<div>
-							<button  class="btn btn-primary"  data-toggle="modal" data-target="#add"style="float: left;margin-right: 5px;">新增</button>
-
 							<form class="form-inline" style="float: left;">
-
 								<div class="form-group">
 									<input type="text" class="form-control" id="exampleInputName2"
-										   placeholder="输入相应的部门名称">
+										   placeholder="输入相应的职位名称">
 								</div>
-
 								<a  href="javaScript:void(0);" class="btn btn-primary positionQuery">查询</a>
 							</form>
 						</div>
@@ -138,14 +134,16 @@
 							<ul>
 								<li>ID</li>
 								<li>名称</li>
-								<li>创建时间</li>
+								<li>申请人</li>
+								<li>申请时间</li>
+								<li>状态</li>
 								<li style="width: 193px;">操作</li>
 							</ul>
 							<ul id="ulContainer">
 							</ul>
 						</div>
                       <div id="page" style="float: right;margin-right: 145px;position: relative;top: -15px;">
-						  <span id="totalPage" style="display: none">${department.pages}</span>
+						  <span id="totalPage" style="display: none">${apply.pages}</span>
 						  <ul class="pagination" id="pagination-demo"></ul>
 			        </div>
                     </div>
@@ -153,56 +151,37 @@
             </div>
         </div>
 
-        <!-- 新增 -->
-		<div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-		  <div class="modal-dialog" role="document">
-		    <div class="modal-content">
-		      <div class="modal-header">
-		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-		        <h4 class="modal-title" id="myModalAdd">新增部门</h4>
-		      </div>
-		      <div class="modal-body">
-		        <form>
-					  <div class="form-group">
-					    <label for="question">部门名称：</label>
-					    <input type="text" class="form-control" id="addPName" placeholder="输入部门名称">
-					  </div>
-				</form>
-		      </div>
-		      <div class="modal-footer">
-		        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-		        <button type="button" id="addSave" class="btn btn-primary">保存</button>
-		      </div>
-		    </div>
-		  </div>
-		</div>
-		
-			
-		
 		<!--更新-->
-		 <div class="modal fade" id="update" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-		  <div class="modal-dialog" role="document">
-		    <div class="modal-content">
-		      <div class="modal-header">
-		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-		        <h4 class="modal-title" id="myModalLabel">部门详情</h4>
-		      </div>
-		      <div class="modal-body">
-		        <form>
-					  <div class="form-group">
-					    <label for="question">部门名称：</label>
-					    <input type="text" class="form-control" id="updatePName">
-					  </div>
-				</form>
-		      </div>
-		      <div class="modal-footer">
-		        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-		        <button type="button" class="btn btn-primary" id="updateSave">保存</button>
-		      </div>
-		    </div>
-		  </div>
+		<div class="modal fade" id="update" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title" id="myModalLabel">职位申请进度状态修改</h4>
+					</div>
+					<div class="modal-body">
+						<form>
+							<input id="applyId" style="display: none"></input>
+							<div class="form-group">
+								<label for="question">状态：</label>
+								<select id="projectPorperty" name="projectPorperty">
+									<option value="0">待查看</option>
+									<option value="1">一面</option>
+									<option value="2">二面</option>
+									<option value="3">通过</option>
+									<option value="4">淘汰</option>
+								</select>
+							</div>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+						<button type="button" class="btn btn-primary" id="updateSave">保存</button>
+					</div>
+				</div>
+			</div>
 		</div>
-		<script src="${contextPath}/static/js/manager/department.js"></script>
-		<script src="${contextPath}/static/js/manager/departmentPage.js"></script>
+		<script src="${contextPath}/static/js/manager/apply.js"></script>
+		<script src="${contextPath}/static/js/manager/applyPage.js"></script>
     </body>
 </html>

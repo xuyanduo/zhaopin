@@ -16,5 +16,5 @@ public interface ApplyMapper {
     int insert(Apply apply);
     Apply findByUserIdAndPId(@Param("userId")int userId,@Param("pId")int pId);
     int updateState(Map<String,Object> map);
-    List<ApplyDto> findApplys(@Param("userId") Integer userId);
+    List<ApplyDto> findApplys(@Param("userId") Integer userId,@Param("search") String search);
 }

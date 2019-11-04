@@ -207,6 +207,8 @@ public class PositionServiceImpl implements PositionService {
         apply.setUserId(userId);
         apply.setPId(pId);
         apply.setResumeId(resumeId);
+        apply.setApplyTime(new Date());
+        apply.setState(Apply.ApplyState.DCK.value);
         int i = applyMapper.insert(apply);
         Resume resume = new Resume();
         resume.setUserId(userId);
@@ -278,11 +280,11 @@ public class PositionServiceImpl implements PositionService {
     }
 
     @Override
-    public ServerResponse findAllApply(Integer pageIndex, Integer pageSize, Integer userId) {
+    public ServerResponse findAllApply(Integer pageIndex, Integer pageSize, Integer userId,String search) {
         if (null != pageIndex && null != pageSize) {
             PageHelper.startPage(pageIndex, pageSize);
         }
-        List<ApplyDto> list = applyMapper.findApplys(userId);
+        List<ApplyDto> list = applyMapper.findApplys(userId,search);
         if (!CollectionUtils.isEmpty(list)) {
             for (ApplyDto ad : list) {
                 ad.setStateTrans(ad.getStateTrans());
