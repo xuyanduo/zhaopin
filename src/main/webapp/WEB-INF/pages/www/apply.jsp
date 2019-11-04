@@ -17,6 +17,15 @@
 		<script type="text/javascript" src="${contextPath}/static/js/bootstrap.min.js" ></script>
 		<script type="text/javascript" src="${contextPath}/static/js/sweerAlert2.79.js"></script>
 		<script type="text/javascript" src="${contextPath}/static/js/jquery.twbsPagination.min.js"></script>
+		<style>
+			#table ul li span {
+				float: none;
+				display: inline-block;
+				font-family: "微软雅黑";
+				font-size: medium;
+				padding: 15px 125px 15px 30px;
+			}
+		</style>
 	</head>
 	<body>
 	<!--头部导航条-->
@@ -74,7 +83,7 @@
 	</nav>
         
        <h4><span>职位申请进度</span></h4>
-	   <div id="count">一共申请了${collection.list[0].count}个职位</div>
+	   <div id="count">一共申请了${apply.total}个职位</div>
        <div id="table">
         	<ul>
         		<li style="display: none;">id</li>
@@ -85,13 +94,9 @@
                 <c:forEach items="${apply.list}" var="p" step="1">
         		<li class="positionList">
         			<span style="display:none;">${p.applyId}</span>
-					<span style="display:none;">${p.positionName}</span>
-        			<span class="PName">${p.pName}</span>
-        			<span>${p.workSpace}</span>
-        			<span>${p.pClassify}</span>
-        			<span>${p.department}</span>
-        			<span><a href="javascript:void(0)">取消收藏</a></span>
-        			<p style="width: 800px;height:31px;overflow: hidden">${p.pRequest}</p>
+					<span style="display:none;">${p.flag}</span>
+					<span class="PName">${p.positionName}</span>
+        			<span >${p.stateTrans}</span>
         		</li>
 				</c:forEach>
         	</ul>
@@ -99,7 +104,7 @@
         
          <!--分页-->
         <div id="page" style="float: right;margin-right: 145px;position: relative;top: -15px;">
-				<span id="totalPage" style="display: none">${collection.pages}</span>
+				<span id="totalPage" style="display: none">${apply.pages}</span>
 				<ul class="pagination" id="pagination-demo"></ul>
         </div>
         
@@ -117,7 +122,7 @@
 			   <p>© 2019 山西华仁通电力科技有限公司. All Rights Reserved. </p>
 		   </div>
        </footer>
-	<script src="${contextPath}/static/js/www/collection.js"></script>
-	<script src="${contextPath}/static/js/www/collectionPage.js"></script>
+	<script src="${contextPath}/static/js/www/apply.js"></script>
+	<script src="${contextPath}/static/js/www/applyPage.js"></script>
 	</body>
 </html>

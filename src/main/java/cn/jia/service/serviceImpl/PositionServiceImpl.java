@@ -3,6 +3,7 @@ package cn.jia.service.serviceImpl;
 import cn.jia.common.ServerResponse;
 import cn.jia.common.TypeCode;
 import cn.jia.domain.*;
+import cn.jia.dto.ApplyDto;
 import cn.jia.dto.PositionsDto;
 import cn.jia.mapper.*;
 import cn.jia.service.PositionService;
@@ -13,6 +14,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.CollectionUtils;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -276,11 +278,17 @@ public class PositionServiceImpl implements PositionService {
     }
 
     @Override
-    public ServerResponse findAllApply(Integer pageIndex,Integer pageSize,Integer userId){
-        if(null != pageIndex && null != pageSize){
-            PageHelper.startPage(pageIndex,pageSize);
+    public ServerResponse findAllApply(Integer pageIndex, Integer pageSize, Integer userId) {
+        if (null != pageIndex && null != pageSize) {
+            PageHelper.startPage(pageIndex, pageSize);
         }
-        return ServerResponse.buildSuccessData(applyMapper.findApplys(userId));
+        List<ApplyDto> list = applyMapper.findApplys(userId);
+        if (!CollectionUtils.isEmpty(list)) {
+            for (ApplyDto ad : list) {
+                ad.setStateTrans(ad.getStateTrans());
+            }
+        }
+        return ServerResponse.buildSuccessData(new PageInfo<>(list));
     }
 
     /*------------------------校园招聘---------------------------------------*/

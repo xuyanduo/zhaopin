@@ -56,6 +56,7 @@
 						<ul class="dropdown-menu">
 							<li><a href="/resume">简历管理</a></li>
 							<li><a href="/collection">职位收藏</a></li>
+							<li><a href="/apply">职位申请进度</a></li></li>
 						</ul>
 					</li>
 				</ul>

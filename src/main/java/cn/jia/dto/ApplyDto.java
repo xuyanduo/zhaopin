@@ -7,6 +7,11 @@ import org.apache.commons.lang3.StringUtils;
 @Data
 public class ApplyDto {
     private Integer applyId;
+
+    /**
+     * 职位的类别（校园招聘、社会招聘）
+     */
+    private Integer flag;
     private String  positionName;
     private String userName;
     private Integer state;

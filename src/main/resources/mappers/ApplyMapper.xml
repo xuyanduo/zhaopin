@@ -8,8 +8,8 @@
             <arg column="p_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
             <arg column="resume_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
             <arg column="state" jdbcType="INTEGER" javaType="java.lang.Integer" />
-            <arg column="handleUser" jdbcType="INTEGER" javaType="java.lang.Integer" />
-            <arg column="handleTime"  javaType="java.util.Date" />
+            <arg column="handle_user" jdbcType="INTEGER" javaType="java.lang.Integer" />
+            <arg column="handle_time"  javaType="java.util.Date" />
         </constructor>
     </resultMap>
 
@@ -20,7 +20,7 @@
     <insert id="insert" parameterType="cn.jia.domain.Apply">
           insert into apply (id, user_id, p_id,resume_id,state,handle_time,handle_user)
     values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{pId,jdbcType=INTEGER},#{resumeId,jdbcType=INTEGER}
-    ,{state},{handleTime},{handleUser}
+    ,#{state},#{handleTime},#{handleUser}
     )
     </insert>
 
@@ -42,6 +42,7 @@
         select
         a.id as applyId,
         u.username as userName,
+        p.p_flag as flag,
         p.p_name as positionName,
         a.state
         from apply a
