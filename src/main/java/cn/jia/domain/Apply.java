@@ -17,9 +17,11 @@ public class Apply {
     private Integer state;
     private Integer handleUser;
     private Date handleTime;
+    private Date applyTime;
 
 
-    public Apply(Integer id, Integer userId, Integer pId, Integer resumeId, Integer state, Integer handleUser, Date handleTime) {
+    public Apply(Integer id, Integer userId, Integer pId, Integer resumeId, Integer state, Integer handleUser,
+                 Date handleTime,Date applyTime) {
         this.id = id;
         this.pId = pId;
         this.userId = userId;
@@ -27,6 +29,7 @@ public class Apply {
         this.state = state;
         this.handleTime = handleTime;
         this.handleUser = handleUser;
+        this.applyTime = applyTime;
     }
     public Apply(){}
 

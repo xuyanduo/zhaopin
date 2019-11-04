@@ -63,4 +63,10 @@ public class AdminController {
     public String questType(){
         return "redirect:/questType/manager";
     }
+
+    @RequiresRoles("admin")
+    @GetMapping("/apply")
+    public String apply(){
+        return "redirect:/apply/manager";
+    }
 }
