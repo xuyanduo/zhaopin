@@ -178,6 +178,8 @@ public class ResumeServiceImpl implements ResumeService {
             gradeDto.setId(resume.getGrade().getId());
             gradeDto.setScore(resume.getGrade().getScore());
             gradeDto.setClassify(resume.getGrade().getClassify());
+            gradeDto.setOrigQuest(resume.getGrade().getOrigQuest());
+            gradeDto.setScoreDetail(resume.getGrade().getScoreDetail());
             resumeDto.setGradeDto(gradeDto);
         }else{
             GradeDto gradeDto = new GradeDto();

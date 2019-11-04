@@ -30,13 +30,15 @@ $(function () {
                                     " \t<span>" + resume.list[i].informationDto.name + "</span>\n" +
                                     " <span>" + resume.list[i].educationDto.level + "</span>\n" +
                                     " <span>" + resume.list[i].positionName + "</span>\n" +
-                                    " <span>" + resume.list[i].informationDto.describes + "</span>\n" +
-                                    " <span>" + resume.list[i].gradeDto.score + "</span>\n" +
+                                    " <span style ='text-align: center'>" + resume.list[i].informationDto.describes + "</span>\n" +
+                                    " <span style ='text-align: center'><a href='javascript:void(0);' class ='detailScore'  >" + resume.list[i].gradeDto.score +
+                                    "</a>\n" + "</span>\n"+
                                     " <span style=\"display: none\">" + resume.list[i].informationDto.userId + "</span>\n" +
                                     " <span style=\"display: none\">" + resume.list[i].id + "</span>\n" +
                                     " \n" +
-                                    " <span><a href='javascript:void(0);'  class=\"btn btn-default look\">查看</a>\n" +
-                                    " <a href=\"javaScript:void(0);\" class=\"btn btn-danger delete\">删除</a></span>\n";
+                                    " <span style='width:auto'><a href='javascript:void(0);'  class=\"btn btn-default look\">查看</a>" +
+                                    " <a href=\"javaScript:void(0);\" class=\"btn btn-danger delete\">删除</a></span>\n"+
+                                    " <span style=\"display: none\">" + resume.list[i].gradeDto.scoreDetail+ "</span>\n" ;
                                 if (resume.list[i].r == 0) {
                                     str += "<span class=\"label label-info labelInfo\">new</span></li>";
                                 } else {

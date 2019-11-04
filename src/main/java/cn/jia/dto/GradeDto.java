@@ -1,8 +1,11 @@
 package cn.jia.dto;
 
+import lombok.Data;
+
 /**
  * Created by jia on 2017/12/31.
  */
+@Data
 public class GradeDto {
     private Integer id;
 
@@ -10,27 +13,8 @@ public class GradeDto {
 
     private String classify;
 
-    public Integer getId() {
-        return id;
-    }
+    private String origQuest;
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+    private String scoreDetail;
 
-    public Float getScore() {
-        return score;
-    }
-
-    public void setScore(Float score) {
-        this.score = score;
-    }
-
-    public String getClassify() {
-        return classify;
-    }
-
-    public void setClassify(String classify) {
-        this.classify = classify;
-    }
 }
