@@ -136,7 +136,6 @@ public class QuestionServiceImpl implements QuestionService {
         if (CollectionUtils.isEmpty(map)) {
             return ServerResponse.buildErrorMsg("请至少作答一提才可提交，提交后不能再次测试！！！");
         }
-        Integer a = 0;
         grade = new Grade();
         // 计算分数
         List<Question> realAnswerList = questionMapper.findByType(classify);
@@ -147,7 +146,6 @@ public class QuestionServiceImpl implements QuestionService {
         grade.setScoreDetail(ScoreParseSupport.getScoreDetail(scoreList));
         //需要把ans置空
         ans = Lists.newArrayList();
-        grade.setScore(a.floatValue());
         grade.setUserId(userId);
         grade.setClassify(classify);
         int i = gradeMapper.insert(grade);

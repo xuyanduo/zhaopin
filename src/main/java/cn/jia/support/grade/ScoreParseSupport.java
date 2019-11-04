@@ -19,9 +19,9 @@ public class ScoreParseSupport {
             scoreDetail.setId(obj.getId());
             scoreDetail.setAnswer(obj.getAnswer());
             if(obj.getAnswer().equals(readlAnswer.get(obj.getId()))){
-                scoreDetail.setAnswer(ScoreDetail.RESULT_YES);
+                scoreDetail.setResult(ScoreDetail.RESULT_YES);
             }else{
-                scoreDetail.setAnswer(ScoreDetail.RESULT_NO);
+                scoreDetail.setResult(ScoreDetail.RESULT_NO);
             }
             list.add(scoreDetail);
         });

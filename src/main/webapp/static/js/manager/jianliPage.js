@@ -31,7 +31,7 @@ $(function () {
                                     " <span>" + resume.list[i].educationDto.level + "</span>\n" +
                                     " <span>" + resume.list[i].positionName + "</span>\n" +
                                     " <span>" + resume.list[i].informationDto.describes + "</span>\n" +
-                                    " <span>" + resume.list[i].gradeDto.score + '(' + resume.list[i].gradeDto.classify + ')' + "</span>\n" +
+                                    " <span>" + resume.list[i].gradeDto.score + "</span>\n" +
                                     " <span style=\"display: none\">" + resume.list[i].informationDto.userId + "</span>\n" +
                                     " <span style=\"display: none\">" + resume.list[i].id + "</span>\n" +
                                     " \n" +
