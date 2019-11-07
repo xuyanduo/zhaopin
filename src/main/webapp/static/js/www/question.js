@@ -102,7 +102,7 @@ function initQuestType(){
     	  onComplete: function(element){
     		  swal("时间到");
     		  $("#btnSubmit").click();
-              $("#btnSubmit").disable();
+              $("#btnSubmit").hide();
     	  }
     	})
     

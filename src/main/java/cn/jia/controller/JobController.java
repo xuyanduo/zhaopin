@@ -92,7 +92,6 @@ public class JobController {
 	}
 
 
-	@RequiresRoles("admin")
 	@GetMapping("/manager/findByPage")
 	@ResponseBody
 	public ServerResponse findByPage(@RequestParam(value = "condition", required = false) String condition,

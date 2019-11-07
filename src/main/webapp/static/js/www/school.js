@@ -88,8 +88,13 @@ function searchPostionType(){
                 for (var i = 0; i < department.list.length; i++) {
                     str = str +'<li  class="B"><a href="javascript:void(0)">'+department.list[i].name+'</a></li>';
                 }
-                var trNode = $('.work');
+                var trNode = $('#positionType');
                 trNode.append(str);
+                $('#positionType>li>a').click(function(){
+                    var text1 = $(this).text();
+                    console.log(text1);
+                    $('#tags').addTag(text1);
+                });
             } else {
                 swal(data.msg, "", "error");
             }
