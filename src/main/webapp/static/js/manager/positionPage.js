@@ -64,5 +64,56 @@ $(function () {
             }
         });
     }
-
+    initDepartment();
+    initClasify();
 })
+function initDepartment(){
+    $.ajax({
+        type: 'get',
+        url: '/department/manager/findByPage',
+        dataType: 'json',
+        success: function (data) {
+            if (data.status == 1) {
+                var str = "";
+                var department = data.data;
+                for (var i = 0; i < department.list.length; i++) {
+                    console.log(department.list[i]);
+                    str = str +  "<option>"+ department.list[i].name+"</option>";
+                }
+                var trNode = $('#updateDepartment');
+                trNode.html(str);
+            } else {
+                swal(data.msg, "", "error");
+            }
+        },
+        error: function () {
+            swal('出现错误', "", "error");
+        }
+    });
+}
+
+function initClasify(){
+    $.ajax({
+        type: 'get',
+        url: '/job/manager/findByPage',
+        dataType: 'json',
+        success: function (data) {
+            if (data.status == 1) {
+                var str = "";
+                var department = data.data;
+                for (var i = 0; i < department.list.length; i++) {
+                    console.log(department.list[i]);
+                    str = str +  "<option>"+ department.list[i].name+"</option>";
+                }
+                var trNode = $('#updateClassify');
+                trNode.html(str);
+            } else {
+                swal(data.msg, "", "error");
+            }
+        },
+        error: function () {
+            swal('出现错误', "", "error");
+        }
+    });
+}
+

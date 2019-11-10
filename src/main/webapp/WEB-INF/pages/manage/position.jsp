@@ -256,17 +256,17 @@
 					  <div class="form-group">
 					    <label for="exampleInputFile">类型：</label>
 					    <select class="form-group" id="updateClassify">
-					    	<option>技术</option>
-					    	<option>销售</option>
-					        <option>管理</option>
+<%--					    	<option>技术</option>--%>
+<%--					    	<option>销售</option>--%>
+<%--					        <option>管理</option>--%>
 					    </select>
 					  </div>
 					<div class="form-group">
 						<label for="exampleInputFile">部门：</label>
 						<select class="form-group" id="updateDepartment">
-							<option>技术部</option>
-							<option>销售部</option>
-							<option>人力部</option>
+<%--							<option>技术部</option>--%>
+<%--							<option>销售部</option>--%>
+<%--							<option>人力部</option>--%>
 						</select>
 					</div>
 					   <div class="form-group">
